@@ -14,16 +14,12 @@ export default function Page() {
 			<Header
 				links={[
 					{
-						link: "/about",
+						link: "/",
 						label: "Home",
 					},
 					{
-						link: "/learn",
-						label: "Features",
-					},
-					{
-						link: "/pricing",
-						label: "Pricing",
+						link: "/dashboard/create",
+						label: "Genereren",
 					},
 				]}
 			/>

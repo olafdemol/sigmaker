@@ -11,7 +11,7 @@ export function HeroSection() {
 	return (
 		<Container pt="sm" size="lg" className={classes.wrapper}>
 			<div className={classes.inner}>
-				<Title className={classes.title}>Sigmaker</Title>
+				<Title className={classes.title}>Flori-signature</Title>
 				<Title className={classes.subtitle}>
 					Maak je eigen e-mail handtekening met een paar klikken!
 				</Title>

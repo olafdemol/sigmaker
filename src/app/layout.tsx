@@ -8,7 +8,6 @@ import {
 } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 import { Notifications } from "@mantine/notifications";
-import { Analytics } from "@vercel/analytics/react";
 import { inter } from "@/styles/fonts";
 import { theme } from "@/styles/theme";
 import { AppProvider } from "./provider";
@@ -49,7 +48,6 @@ export default function RootLayout({
           <MantineProvider theme={theme}>
             <ModalsProvider>
               <AppProvider>{children}</AppProvider>
-              <Analytics />
             </ModalsProvider>
             <Notifications />
           </MantineProvider>
