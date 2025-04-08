@@ -14,6 +14,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons-react";
 import { Logo } from "@/components/Logo/Logo";
 import classes from "./Header.module.css";
+import { useRouter } from "next/navigation";
 
 interface HeaderActionProps {
 	links: {
@@ -25,6 +26,13 @@ interface HeaderActionProps {
 
 export function Header({ links }: HeaderActionProps) {
 	const [opened, { toggle }] = useDisclosure(false);
+	const router = useRouter();
+
+	const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, link: string) => {
+			event.preventDefault();
+			router.push(link);
+		};
+
 	const items = links.map((link) => {
 		const menuItems = link.links?.map((item) => (
 			<Menu.Item key={item.link}>{item.label}</Menu.Item>
@@ -40,8 +48,8 @@ export function Header({ links }: HeaderActionProps) {
 				>
 					<Menu.Target>
 						<a
-							href={link.link}
 							className={classes.link}
+							onClick={(e) => handleLinkClick(e, link.link)}
 						>
 							<Center>
 								<span className={classes.linkLabel}>{link.label}</span>
@@ -59,7 +67,7 @@ export function Header({ links }: HeaderActionProps) {
 				key={link.label}
 				href={link.link}
 				className={classes.link}
-				onClick={(event) => event.preventDefault()}
+				onClick={(e) => handleLinkClick(e, link.link)}
 			>
 				{link.label}
 			</a>
