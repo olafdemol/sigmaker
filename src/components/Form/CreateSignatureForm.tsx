@@ -1,11 +1,9 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Box, Button, Paper, Space, Text, TextInput } from "@mantine/core";
-import { modals } from "@mantine/modals";
-import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { Box, Button, Group, Paper, Space, Text, TextInput } from "@mantine/core";
+import { useEffect, useState } from "react";
 import { z } from "zod";
+import { IconCheck } from "@tabler/icons-react";
 
 const schema = z.object({
     name: z.string().min(1, { message: "Name is required" }),
@@ -15,34 +13,54 @@ const schema = z.object({
 export type SignatureFormValues = z.infer<typeof schema>;
 
 export const CreateSignatureForm = () => {
-    const router = useRouter();
-
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<SignatureFormValues>({
-        resolver: zodResolver(schema),
+    const [formValues, setFormValues] = useState<SignatureFormValues>({
+        name: "",
+        function: "",
     });
+    const [errors, setErrors] = useState<Partial<Record<keyof SignatureFormValues, string>>>({});
+    const [isSaved, setIsSaved] = useState(false);
 
-    const handleConfirmDialog = (data: SignatureFormValues) => {
-        localStorage.setItem("signatureForm", JSON.stringify(data));
-        router.push("/dashboard/signature");
+    useEffect(() => {
+        const savedData = localStorage.getItem("signatureForm");
+        if (savedData) {
+            const parsedData: SignatureFormValues = JSON.parse(savedData);
+            setFormValues(parsedData);
+        }
+    }, []);
+
+    const handleChange = (field: keyof SignatureFormValues, value: string) => {
+        setFormValues((prev) => ({ ...prev, [field]: value }));
+        saveToLocalStorage(field, value);
     };
 
-    const onSubmit = (data: SignatureFormValues) => {
-        modals.openConfirmModal({
-            title: "Handtekening aanmaken!",
-            children: (
-                <Text size="sm">
-                    Naam: {data.name}
-                    <br />
-                    Functie: {data.function}
-                </Text>
-            ),
-            labels: { confirm: "Confirm", cancel: "Cancel" },
-            onConfirm: () => handleConfirmDialog(data),
-        });
+    const saveToLocalStorage = (field: keyof SignatureFormValues, value: string) => {
+        const currentData = localStorage.getItem("signatureForm");
+        const parsedData = currentData ? JSON.parse(currentData) : {};
+        const updatedData = { ...parsedData, [field]: value };
+        localStorage.setItem("signatureForm", JSON.stringify(updatedData));
+    };
+
+    const validateForm = () => {
+        const result = schema.safeParse(formValues);
+        if (!result.success) {
+            const validationErrors: Partial<Record<keyof SignatureFormValues, string>> = {};
+            result.error.errors.forEach((err) => {
+                if (err.path[0]) {
+                    validationErrors[err.path[0] as keyof SignatureFormValues] = err.message;
+                }
+            });
+            setErrors(validationErrors);
+            return false;
+        }
+        setErrors({});
+        return true;
+    };
+
+    const handleSubmit = () => {
+        if (validateForm()) {
+            localStorage.setItem("signatureForm", JSON.stringify(formValues));
+            setIsSaved(true);
+        }
     };
 
     return (
@@ -53,17 +71,27 @@ export const CreateSignatureForm = () => {
                 </Text>
                 <TextInput
                     label="Naam"
-                    error={errors.name?.message}
-                    {...register("name")}
+                    value={formValues.name}
+                    error={errors.name}
+                    onChange={(e) => handleChange("name", e.target.value)}
                 />
                 <Space h="sm" />
                 <TextInput
                     label="Functie"
-                    error={errors.function?.message}
-                    {...register("function")}
+                    value={formValues.function}
+                    error={errors.function}
+                    onChange={(e) => handleChange("function", e.target.value)}
                 />
                 <Space h="md" />
-                <Button onClick={handleSubmit(onSubmit)}>Create Signature</Button>
+
+                <Group>
+                    <Button onClick={handleSubmit}>
+                        Onthouden
+                    </Button>
+                    {isSaved && (
+                        <IconCheck size={25} style={{ marginLeft: 8 }} />
+                    )}
+                </Group>
             </Box>
         </Paper>
     );

@@ -23,7 +23,7 @@ export function HeroSection() {
 						gradient={{ from: "primary", to: "pink" }}
 						className={classes.control}
 						onClick={() => {
-							router.push("dashboard");
+							router.push("dashboard/signature");
 						}}
 						rightSection={<IconArrowRight size={16} />}
 					>
