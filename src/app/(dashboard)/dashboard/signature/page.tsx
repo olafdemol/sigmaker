@@ -9,7 +9,7 @@ import { getSignature } from "@/services/signature/getSignatureTemplate";
 export default function Signature() {
     const signatureTemplate = getSignature();
     return (
-        <PageContainer title="Tables">
+        <PageContainer title="">
             <SignatureEditor signatureTemplate={signatureTemplate}></SignatureEditor>
         </PageContainer>
     );

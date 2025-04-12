@@ -5,6 +5,7 @@ import { buildSignature } from "@/services/signature/signatureBuilder";
 import { Editor } from "@monaco-editor/react";
 import { Button, Card, Group, Space, Stepper } from "@mantine/core";
 import { CreateSignatureForm } from "../Form/CreateSignatureForm";
+import SignatureUsageInstructions from "./SignatureUsageInstructions";
 
 type ReadOnlyEditorProps = {
     signatureTemplate: string;
@@ -54,32 +55,7 @@ const ReadOnlyEditor: React.FC<ReadOnlyEditorProps> = ({ signatureTemplate }) =>
                     </div>
                 </Stepper.Step>
                 <Stepper.Step label="Stap 3" description="Gebruiken">
-                    <div>
-                        <h3>Gebruik deze handtekening</h3>
-                        <Card shadow="sm" padding="lg" radius="md" withBorder>
-                        <h4>Optie 1</h4>
-                        <p>Deze handtekening is klaar om te gebruiken in Outlook.</p>
-                        <p>Om deze handtekening te gebruiken, <b>selecteer</b> de handtekening en sleep deze in Outlook.</p>
-                        <p>Kopiëren kan ook, zorg dan dat je de handtekening met originele opmaak plakt. Dit kan je doen met rechtersmuisklik - 'plak met originele opmaak'</p>
-                            <iframe
-                                srcDoc={editorValue}
-                                style={{
-                                    width: "100%",
-                                    height: "20rem",
-                                    border: "1px solid #ccc",
-                                    marginTop: "10px",
-                                    backgroundColor: "#fff",
-                                }}
-                            />
-                        </Card>
-                        <Space h={"md"}></Space>
-                        <Card shadow="sm" padding="lg" radius="md" withBorder>
-
-                        <h4>Optie 2</h4>
-                        <p>Klik op de knop hieronder om een e-mail te versturen naar jouw emailadres.</p>
-                        <p>Kopieer de ontvangen email in je mailclient naar keuze en plaats deze in de handtekening instellingen.</p>
-                        </Card>
-                    </div>
+                    <SignatureUsageInstructions editorValue={editorValue} /> {/* Updated component name */}
                 </Stepper.Step>
             </Stepper>
 
