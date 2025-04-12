@@ -8,6 +8,7 @@ import { IconCheck } from "@tabler/icons-react";
 const schema = z.object({
     name: z.string().min(1, { message: "Name is required" }),
     function: z.string().min(1, { message: "Function is required" }),
+    subtitle: z.string().optional(),
 });
 
 export type SignatureFormValues = z.infer<typeof schema>;
@@ -16,6 +17,7 @@ export const CreateSignatureForm = () => {
     const [formValues, setFormValues] = useState<SignatureFormValues>({
         name: "",
         function: "",
+        subtitle: "",
     });
     const [errors, setErrors] = useState<Partial<Record<keyof SignatureFormValues, string>>>({});
     const [isSaved, setIsSaved] = useState(false);
@@ -81,6 +83,13 @@ export const CreateSignatureForm = () => {
                     value={formValues.function}
                     error={errors.function}
                     onChange={(e) => handleChange("function", e.target.value)}
+                />
+                <Space h="sm" />
+                <TextInput
+                    label="Ondertitel"
+                    value={formValues.subtitle}
+                    error={errors.subtitle}
+                    onChange={(e) => handleChange("subtitle", e.target.value)}
                 />
                 <Space h="md" />
 

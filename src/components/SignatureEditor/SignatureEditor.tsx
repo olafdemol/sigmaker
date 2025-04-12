@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { buildSignature } from "@/services/signature/signatureBuilder";
 import { Editor } from "@monaco-editor/react";
-import { Button, Group, Stepper } from "@mantine/core";
+import { Button, Card, Group, Space, Stepper } from "@mantine/core";
 import { CreateSignatureForm } from "../Form/CreateSignatureForm";
 
 type ReadOnlyEditorProps = {
@@ -30,26 +30,17 @@ const ReadOnlyEditor: React.FC<ReadOnlyEditorProps> = ({ signatureTemplate }) =>
         }
     }, [signatureTemplate]);
 
-    const handleCopyToClipboard = () => {
-        navigator.clipboard.writeText(editorValue).then(
-            () => {
-                alert("Copied to clipboard!");
-            },
-            (err) => {
-                console.error("Failed to copy text: ", err);
-            }
-        );
-    };
-
     return (
         <div style={{ maxWidth: "1024px", margin: "0 auto" }}>
             <Stepper active={activeStep} onStepClick={setActiveStep} orientation="horizontal">
                 <Stepper.Step label="Stap 1" description="Informatie">
-                    <CreateSignatureForm />
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                        <CreateSignatureForm />
+                    </div>
                 </Stepper.Step>
                 <Stepper.Step label="Stap 2" description="Preview">
                     <div>
-                        <h3>HTML Preview</h3>
+                        <h3>Preview</h3>
                         <iframe
                             srcDoc={editorValue}
                             style={{
@@ -57,31 +48,50 @@ const ReadOnlyEditor: React.FC<ReadOnlyEditorProps> = ({ signatureTemplate }) =>
                                 height: "20rem",
                                 border: "1px solid #ccc",
                                 marginTop: "10px",
+                                backgroundColor: "#fff",
                             }}
                         />
                     </div>
                 </Stepper.Step>
                 <Stepper.Step label="Stap 3" description="Gebruiken">
                     <div>
-                        <Editor
-                            height="20rem"
-                            defaultLanguage="html"
-                            value={editorValue} // Use the state value for the editor
-                            options={{
-                                readOnly: true,
-                            }}
-                        />
-                        <Button onClick={handleCopyToClipboard} style={{ marginTop: "10px" }} fullWidth={false}>
-                            Copy to Clipboard
-                        </Button>
-                        <p style={{ marginTop: "10px" }}>Kopieer de tekst en plak deze in outlook</p>
+                        <h3>Gebruik deze handtekening</h3>
+                        <Card shadow="sm" padding="lg" radius="md" withBorder>
+                        <h4>Optie 1</h4>
+                        <p>Deze handtekening is klaar om te gebruiken in Outlook.</p>
+                        <p>Om deze handtekening te gebruiken, <b>selecteer</b> de handtekening en sleep deze in Outlook.</p>
+                        <p>Kopiëren kan ook, zorg dan dat je de handtekening met originele opmaak plakt. Dit kan je doen met rechtersmuisklik -> 'plak met originele opmaak'</p>
+                            <iframe
+                                srcDoc={editorValue}
+                                style={{
+                                    width: "100%",
+                                    height: "20rem",
+                                    border: "1px solid #ccc",
+                                    marginTop: "10px",
+                                    backgroundColor: "#fff",
+                                }}
+                            />
+                        </Card>
+                        <Space h={"md"}></Space>
+                        <Card shadow="sm" padding="lg" radius="md" withBorder>
+
+                        <h4>Optie 2</h4>
+                        <p>Klik op de knop hieronder om een e-mail te versturen naar jouw emailadres.</p>
+                        <p>Kopieer de ontvangen email in je mailclient naar keuze en plaats deze in de handtekening instellingen.</p>
+                        </Card>
                     </div>
                 </Stepper.Step>
             </Stepper>
 
             <Group justify="center" mt="xl">
-                <Button variant="default" onClick={prevStep}>Back</Button>
-                <Button onClick={nextStep}>Next step</Button>
+                <Button variant="default" onClick={prevStep}>Terug</Button>
+                {
+                    activeStep != 2 ? (
+                        <Button onClick={nextStep}>Volgende</Button>
+                    ) : (
+                        <></>
+                    )
+                }
             </Group>
         </div>
     );
