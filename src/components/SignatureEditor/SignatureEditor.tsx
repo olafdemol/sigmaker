@@ -60,7 +60,7 @@ const ReadOnlyEditor: React.FC<ReadOnlyEditorProps> = ({ signatureTemplate }) =>
                         <h4>Optie 1</h4>
                         <p>Deze handtekening is klaar om te gebruiken in Outlook.</p>
                         <p>Om deze handtekening te gebruiken, <b>selecteer</b> de handtekening en sleep deze in Outlook.</p>
-                        <p>Kopiëren kan ook, zorg dan dat je de handtekening met originele opmaak plakt. Dit kan je doen met rechtersmuisklik -> 'plak met originele opmaak'</p>
+                        <p>Kopiëren kan ook, zorg dan dat je de handtekening met originele opmaak plakt. Dit kan je doen met rechtersmuisklik - 'plak met originele opmaak'</p>
                             <iframe
                                 srcDoc={editorValue}
                                 style={{
