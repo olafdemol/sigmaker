@@ -89,7 +89,7 @@ export function Header({ links }: HeaderActionProps) {
 				<Group gap="sm" className={classes.links}>
 					{items}
 				</Group>
-				<Button variant="gradient" gradient={{ from: "primary", to: "pink" }}>
+				<Button >
 					Get Started
 				</Button>
 

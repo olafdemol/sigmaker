@@ -37,11 +37,11 @@
 
 .title {
 	font-weight: 900;
-	line-height: 1.1;
+	line-height: 1.6;
 	font-size: rem(72px);
 	max-width: 100%;
 	letter-spacing: -1px;
-	background: linear-gradient(45deg, var(--mantine-color-primary-filled), var(--mantine-color-pink-filled));
+	background: #363565;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);

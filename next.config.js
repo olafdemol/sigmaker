@@ -4,4 +4,5 @@ module.exports = {
   experimental: {
     optimizePackageImports: ["@mantine/core", "@mantine/hooks"],
   },
+  distDir: 'build'
 };

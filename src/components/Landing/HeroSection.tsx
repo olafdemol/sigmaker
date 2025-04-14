@@ -16,12 +16,11 @@ export function HeroSection() {
 					Maak je eigen e-mail handtekening met een paar klikken!
 				</Title>
 
-				<Group mt={60}>
+				<Group mt={20}>
 					<Button
 						size="lg"
-						variant="gradient"
-						gradient={{ from: "primary", to: "pink" }}
 						className={classes.control}
+						color="#3AAC4E"
 						onClick={() => {
 							router.push("dashboard/signature");
 						}}
