@@ -1,4 +1,4 @@
-import { CreateSignatureForm } from "@/components/Form/CreateSignatureForm";
+import { CreateSignatureForm } from "@/components/SignatureEditor/CreateSignatureForm";
 import { SimpleForm } from "@/components/Form/SimpleForm";
 import { PageContainer } from "@/components/PageContainer/PageContainer";
 
