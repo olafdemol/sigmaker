@@ -11,13 +11,16 @@ export async function sendMail(to: string, subject: string, body: string): Promi
             user: process.env.SMTP_USER, // Email from environment variable
             pass: process.env.SMTP_PASS, // Email password from environment variable
         },
+        tls: {
+            rejectUnauthorized: false
+        }
     });
 
     const mailOptions = {
         from: `"${process.env.MAIL_FROM_NAME}" <${process.env.MAIL_FROM_EMAIL}>`, // Sender name and email from environment variables
         to,
         subject,
-        text: body,
+        html: body,
     };
 
     try {

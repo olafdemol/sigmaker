@@ -7,6 +7,7 @@ export const theme = createTheme({
 	headings: {
 		fontFamily: "Space Grotesk, sans-serif",
 	},
+	primaryShade: 9,
 	colors: {
 		primary: [
 			"#f2f2f8",
@@ -18,7 +19,7 @@ export const theme = createTheme({
 			"#615fa3",
 			"#514f8f",
 			"#484680",
-			"#3d3c72"
+			"#363565"
 		],
 	},
 	primaryColor: "primary",
