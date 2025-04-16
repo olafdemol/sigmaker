@@ -18,7 +18,7 @@ export default function Page() {
 						label: "Home",
 					},
 					{
-						link: "/dashboard/create",
+						link: "/dashboard/signature",
 						label: "Genereren",
 					},
 				]}
