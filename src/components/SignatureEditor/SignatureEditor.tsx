@@ -94,7 +94,7 @@ const SignatureEditor = ({ signatureTemplate }: { signatureTemplate: string }) =
                             <li>Selecteer bij alle drie de opties "Arial" en font-size "11".</li>
                         </ol>
                             <AspectRatio ratio={1886/1518} maw={600}>
-                                <video src="/static/videos/change-mail-font.mp4" controls muted preload="none"></video>
+                                <video src="/static/videos/change-mail-font.mp4" controls muted></video>
                             </AspectRatio>
                         </Group>
                     </div>
