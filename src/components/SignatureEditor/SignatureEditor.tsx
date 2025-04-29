@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { buildSignature } from "@/services/signature/signatureBuilder";
 import { Editor } from "@monaco-editor/react";
-import { Button, Group, Stepper } from "@mantine/core";
+import { AspectRatio, Button, Center, Group, Stepper } from "@mantine/core";
 import { CreateSignatureForm, schema, SignatureFormValues } from "./CreateSignatureForm";
 import SignatureUsageInstructions from "./SignatureUsageInstructions";
 
@@ -83,19 +83,20 @@ const SignatureEditor = ({ signatureTemplate }: { signatureTemplate: string }) =
                         />
                     </div>
                 </Stepper.Step>
-                <Stepper.Step label="Stap 2" description="Preview">
+                <Stepper.Step label="Stap 2" description="Outlook goed opzetten">
                     <div>
-                        <h3>Preview</h3>
-                        <iframe
-                            srcDoc={editorValue}
-                            style={{
-                                width: "100%",
-                                height: "20rem",
-                                border: "1px solid #ccc",
-                                marginTop: "10px",
-                                backgroundColor: "#fff",
-                            }}
-                        />
+                        <Group justify="center" maw={600} m={"auto"}>
+                        <h3>Font</h3>
+                        <p>Het is belangrijk dat je de juiste font gebruikt in Outlook. Dit kan je doen door de volgende stappen te volgen:</p>
+                        <ol>
+                            <li>Open Outlook en ga naar de instellingen.</li>
+                            <li>Kies voor "E-mail" en vervolgens "Fonts" of "Lettertypes".</li>
+                            <li>Selecteer bij alle drie de opties "Arial" en font-size "11".</li>
+                        </ol>
+                            <AspectRatio ratio={1886/1518} maw={600}>
+                                <video src="/static/videos/change-mail-font.mp4" controls muted preload="none"></video>
+                            </AspectRatio>
+                        </Group>
                     </div>
                 </Stepper.Step>
                 <Stepper.Step label="Stap 3" description="Gebruiken">

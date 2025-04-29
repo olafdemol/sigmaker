@@ -13,7 +13,7 @@ const SignatureUsageInstructions: React.FC<SignatureUsageInstructionsProps> = ({
 
     const handleSendMail = async () => {
         try {
-            await sendMail(email, "Your Signature", editorValue);
+            await sendMail(email, "FloriSignature - your signature", editorValue);
             alert("Email sent successfully!");
         } catch (error) {
             console.error("Error sending email:", error);
