@@ -86,11 +86,11 @@ const SignatureEditor = ({ signatureTemplate }: { signatureTemplate: string }) =
                 <Stepper.Step label="Stap 2" description="Outlook goed opzetten">
                     <div>
                         <Group justify="center" maw={600} m={"auto"}>
-                        <h3>Font</h3>
+                        <h3>Lettertype aanpassen naar Arial size 11</h3>
                         <p>Het is belangrijk dat je de juiste font gebruikt in Outlook. Dit kan je doen door de volgende stappen te volgen:</p>
                         <ol>
-                            <li>Open Outlook en ga naar de instellingen.</li>
-                            <li>Kies voor "E-mail" en vervolgens "Fonts" of "Lettertypes".</li>
+                            <li>Open Outlook en ga Bestand - Opties, naar de instellingen.</li>
+                            <li>Kies voor "Mail" en vervolgens "Fonts" of "Lettertypes".</li>
                             <li>Selecteer bij alle drie de opties "Arial" en font-size "11".</li>
                         </ol>
                             <AspectRatio ratio={1886/1518} maw={600}>
