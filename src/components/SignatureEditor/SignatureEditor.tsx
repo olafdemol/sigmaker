@@ -83,7 +83,7 @@ const SignatureEditor = ({ signatureTemplate }: { signatureTemplate: string }) =
                         />
                     </div>
                 </Stepper.Step>
-                <Stepper.Step label="Stap 2" description="Outlook goed opzetten">
+                <Stepper.Step label="Stap 2" description="Outlook voorbereiden">
                     <div>
                         <Group justify="center" maw={600} m={"auto"}>
                         <h3>Lettertype aanpassen naar Arial size 11</h3>
