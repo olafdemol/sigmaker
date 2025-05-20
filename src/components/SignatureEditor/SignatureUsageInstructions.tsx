@@ -16,13 +16,16 @@ const SignatureUsageInstructions: React.FC<SignatureUsageInstructionsProps> = ({
 
     const handleSendMail = async () => {
         try {
-            let mail = `<p>Deze handtekening is klaar om te gebruiken in Outlook.</p>
+            let mail = `<p>Onderstaand vind je jouw nieuwe handtekening.</p>
+                <p>Voor het instellen graag de volgende stappen goed doorlezen/volgen:</p>
                 <ol>
-                    <li>Ga via Bestand - Opties - Mail - Handtekening naar het handtekening selectiescherm.</li>
-                    <li>Maak een nieuwe handtekening aan en geef deze een naam.</li>
-                    <li>Om deze handtekening te gebruiken, <b>selecteer</b> de handtekening en <b>sleep</b> deze in het tekstvak.</li>
-                    <li>Kopiëren kan ook, zorg dan dat je de handtekening <b>met originele opmaak plakt</b>. Dit kan je doen met rechtersmuisklik - 'plak met originele opmaak'</li>
-                    <li><b>Is je naam heel erg lang?</b> Je kan het verticale streepje in het midden van de handtekening naar rechts of links slepen in outlook zodat deze past.</li>
+                    <li>Zorg dat je eerst het font van jouw e-mails hebt aangepast naar “Arial 11” zoals verzocht in de editor, stap 2.</li>
+                    <li>Kopieer/selecteer onderstaande handtekening.</li>
+                    <li>Ga in het menu via Bestand - Opties – E-mail - Handtekeningen naar het handtekening selectiescherm.</li>
+                    <li>Maak een nieuwe handtekening aan of bewerk een bestaande.</li>
+                    <li>Let op: plak de nieuwe handtekening met behoudt van de originele opmaak. Dit kan je doen met de rechter muisknop – ‘opmaak van bron behouden’. Het lettertype van de handtekening niet handmatig aanpassen.</li>
+                    <li>Controleer of de nieuwe handtekening gekoppeld is aan je standaardhandtekening instellingen (rechtsboven in het handtekening selectiescherm).</li>
+                    <li>Indien je met verschillende handtekeningen werkt, bijv. door het gebruik van meerdere e-mailadressen, deze ook graag aanpassen.</li>
                 </ol>
                 <br/><br/><br/>`
                 + editorValue;

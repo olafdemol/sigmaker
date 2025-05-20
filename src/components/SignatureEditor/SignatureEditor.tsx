@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { buildSignature } from "@/services/signature/signatureBuilder";
-import { Editor } from "@monaco-editor/react";
-import { AspectRatio, Button, Center, Group, Stepper } from "@mantine/core";
+import { AspectRatio, Button, Group, Stepper } from "@mantine/core";
 import { CreateSignatureForm, schema, SignatureFormValues } from "./CreateSignatureForm";
 import SignatureUsageInstructions from "./SignatureUsageInstructions";
 
@@ -87,11 +86,11 @@ const SignatureEditor = ({ signatureTemplate }: { signatureTemplate: string }) =
                     <div>
                         <Group justify="center" maw={600} m={"auto"}>
                         <h3>Lettertype aanpassen naar Arial size 11</h3>
-                        <p>Het is belangrijk dat je de juiste font gebruikt in Outlook. Dit kan je doen door de volgende stappen te volgen:</p>
+                        <p>Voor we de nieuwe handtekening gaan instellen, is het belangrijk dat je het juiste font in Outlook gebruikt. Volg hiervoor onderstaande stappen:</p>
                         <ol>
-                            <li>Open Outlook en ga Bestand - Opties, naar de instellingen.</li>
-                            <li>Kies voor "Mail" en vervolgens "Fonts" of "Lettertypes".</li>
-                            <li>Selecteer bij alle drie de opties "Arial" en font-size "11".</li>
+                            <li>Ga in het menu via Bestand - Opties – E-mail – Briefpapier en lettertype naar het lettertype selectiescherm.</li>
+                            <li>Kies bij alle 3 de opties – lettertype/font: “Arial” en punten/fontsize: “11”.</li>
+                            <li>Sluit af met OK.</li>
                         </ol>
                             <AspectRatio ratio={1886/1518} maw={600}>
                                 <video src="/static/videos/change-mail-font.mp4" controls muted></video>
